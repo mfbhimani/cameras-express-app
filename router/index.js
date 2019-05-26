@@ -27,7 +27,7 @@ router.post('/login', (req, res, next) => {
 // get list of cameras
 
 router.get('/camera', (req, res, next) => {
-  // res.json({"msg": "returns list of cameras"});
+  res.json({'msg': 'returns list of cameras'});
   res.sendStatus(200);
 });
 
@@ -37,6 +37,7 @@ router.get('/camera/:id', (req, res, next) => {
   console.log(req.body);
   // res.json({"msg2":`view camera of id ${req.params.id}`});
   res.sendStatus(200);
+  next()
 });
 
 // create camera
