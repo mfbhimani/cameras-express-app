@@ -27,8 +27,9 @@ router.post('/login', (req, res, next) => {
 // get list of cameras
 
 router.get('/camera', (req, res, next) => {
-  // res.json({'msg': 'returns list of cameras'});
+  // res.json({msg: 'returns list of cameras'});
   res.sendStatus(200);
+  // res.status(200).json({msg:'return list of cameras'});
 });
 
 // get camera by ID
