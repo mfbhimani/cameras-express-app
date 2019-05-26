@@ -1,5 +1,7 @@
-Welcome to my store containing collection of cameras. It is built using Express JS
-and contains the following routes
+Welcome to my store containing a collection of cameras stored in a json file. The application is built using Express JS and contains the following routes
 
-- /camera : get list of cameras
-- /camera/:id : get a camera by id
+- GET  /camera : get list of cameras
+- GET  /camera/id : get a camera by id eg. /camera/2
+- POST /camera : create a camera
+- PUT  /camera/id  : update an existing camera by id eg. /camera/3
+- DELETE /camera/id : delete an existing camera by id eg. /camera/4
