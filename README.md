@@ -1,3 +1,5 @@
+# ExpressJS Application of Cameras
+
 Welcome to my store containing a collection of cameras stored in a json file. The application is built using Express JS and contains the following routes
 
 - GET  /camera : get list of cameras
