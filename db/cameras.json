@@ -1,0 +1,23 @@
+[
+  {
+		"id": 1,
+    "brand": "Aruba",
+		"model": "Americas",
+		"sensor": "CMOS",
+		"viewfinder": "electronic",
+    "price": 200
+  },
+  {
+    "id": 2,
+    "brand": "Aruba",
+		"model": "Americas",
+		"sensor": "CMOS",
+		"viewfinder": "electronic",
+    "price": 200
+  },
+  {
+    "name": "sssdfdsf",
+    "region": "Americas",
+    "landlocked": false
+  }
+]
