@@ -1,23 +1,20 @@
 [
   {
 		"id": 1,
-    "brand": "Aruba",
-		"model": "Americas",
+    "brand": "Nikon",
+		"model": "Coolpix W150",
 		"sensor": "CMOS",
-		"viewfinder": "electronic",
+		"megapixels": 13.20,
+		"viewfinder": "Electronic",
     "price": 200
   },
   {
-    "id": 2,
-    "brand": "Aruba",
-		"model": "Americas",
+    "id": 1,
+    "brand": "Canon",
+		"model": "EOS 250D",
 		"sensor": "CMOS",
-		"viewfinder": "electronic",
+		"megapixels": 24.10,
+		"viewfinder": "Optical",
     "price": 200
-  },
-  {
-    "name": "sssdfdsf",
-    "region": "Americas",
-    "landlocked": false
   }
 ]
