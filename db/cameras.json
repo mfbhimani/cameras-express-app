@@ -9,12 +9,12 @@
     "price": 200
   },
   {
-    "id": 1,
+    "id": 2,
     "brand": "Canon",
 		"model": "EOS 250D",
 		"sensor": "CMOS",
 		"megapixels": 24.10,
 		"viewfinder": "Optical",
-    "price": 200
+    "price": 350
   }
 ]
