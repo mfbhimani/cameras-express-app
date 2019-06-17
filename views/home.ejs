@@ -3,9 +3,44 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Home</title>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
 	</head>
 	<body>
-		<h1>Welcome!</h1>
+		<header class="container">
+		  <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">Cameras Store - List of Cameras</span>
+      </nav>
+		</header>
+		<main>
+		 <section class="container">
+       <table class="table">
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>Brand</th>
+              <th>Model</th>
+							<th>Sensor</th>
+							<th>Megapixels</th>
+              <th>Viewfinder</th>
+							<th>Price</th>
+            </tr>
+          </thead>
+					<tbody>
+					  <% cameras.forEach((camera) => { %>
+              <tr>
+                <td><%= camera.id %></td>
+								<td><%= camera.brand %></td>
+								<td><%= camera.model %></td>
+								<td><%= camera.sensor %></td>
+								<td><%= camera.megapixels %></td>
+								<td><%= camera.viewfinder %></td>
+								<td>$<%= camera.price %></td>
+              </tr>
+            <% }); %>
+					</tbody>
+       </table>
+		 </section>
+		</main>
 	</body>
 </html>

@@ -14,32 +14,50 @@ async function readCameras() {
   return JSON.parse(json);
 }
 
+async function getNewItemID() {
+
+  const allCameras = await readCameras();
+  return allCameras.length+1 ;
+}
+
 async function writeCameras(cameras) {
   const json = JSON.stringify(cameras, null, 2);
-  await writeFile(filePath, json);
-
-  const json = JSON.stringify(items, null, 2);
-  return writeFile(dbfilepath, json, 'utf8')
+  await writeFile(filePath, json, 'utf8');
 }
 
-async function createCamera(country) {
-  const allCountries = await readCountries();
-  await writeCountries(allCountries.concat(country));
+async function createCamera(camera) {
+  const allCameras = await readCameras();
+  await writeCameras(allCameras.concat(camera));
 
-  items.push(newItem);
-  return writeitems(items);
 }
 
-asyc function getitembyid(id) {
+async function getCameraById(id) {
 
-  const items = await readitems();
+  const allCameras = await readCameras();
 
-  let matcheditem ;
-  items.forEach((item) => {
-    if (item.id === id) {
-      matcheditem = item ;
+  let founditem ;
+  allCameras.forEach((camera) => {
+
+    if (camera.id === parseInt(id)) {
+
+      founditem = camera ;
+
     }
   });
 
-  res.json(item);
+  return founditem;
+
 }
+
+async function cameraExists(brand,model) {
+  const cameras = await readCameras();
+  return cameras.some(camera => camera.brand === brand && camera.model === model);
+}
+
+module.exports = {
+  getNewItemID,
+  getCameraById,
+  cameraExists,
+  createCamera,
+  getAllCameras: readCameras,
+};

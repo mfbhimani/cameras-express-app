@@ -1,20 +1,74 @@
 [
   {
-		"id": 1,
+    "id": 1,
     "brand": "Nikon",
-		"model": "Coolpix W150",
-		"sensor": "CMOS",
-		"megapixels": 13.20,
-		"viewfinder": "Electronic",
+    "model": "Coolpix W150",
+    "sensor": "CMOS",
+    "megapixels": 13.2,
+    "viewfinder": "Electronic",
     "price": 200
   },
   {
     "id": 2,
     "brand": "Canon",
-		"model": "EOS 250D",
-		"sensor": "CMOS",
-		"megapixels": 24.10,
-		"viewfinder": "Optical",
+    "model": "EOS 250D",
+    "sensor": "CMOS",
+    "megapixels": 24.1,
+    "viewfinder": "Optical",
     "price": 350
+  },
+  {
+    "id": 3,
+    "brand": "Olympus",
+    "model": "Tough TG-6",
+    "sensor": "CMOS",
+    "megapixels": 12,
+    "viewfinder": "None",
+    "price": 120
+  },
+  {
+    "id": 4,
+    "brand": "Ricoh",
+    "model": "WG-6",
+    "sensor": "CMOS",
+    "megapixels": 20,
+    "viewfinder": "Optical",
+    "price": 215
+  },
+  {
+    "id": 5,
+    "brand": "Panasonic",
+    "model": "Lumix DC-G95",
+    "sensor": "CMOS",
+    "megapixels": 20.3,
+    "viewfinder": "Electronic",
+    "price": 540
+  },
+  {
+    "id": 6,
+    "brand": "Fujifilm",
+    "model": "FinePix XP140",
+    "sensor": "CMOS",
+    "megapixels": 16.4,
+    "viewfinder": "None",
+    "price": 360
+  },
+  {
+    "id": 7,
+    "brand": "Nikon",
+    "model": "D5300",
+    "sensor": "CMOS",
+    "megapixels": 24.2,
+    "viewfinder": "Optical",
+    "price": 580
+  },
+  {
+    "id": 8,
+    "brand": "Sony",
+    "model": "DSC-HX60",
+    "sensor": "CMOS",
+    "megapixels": 20.4,
+    "viewfinder": "Electronic",
+    "price": 420
   }
 ]
