@@ -31,6 +31,12 @@ async function createCamera(camera) {
 
 }
 
+async function deleteCamera(camera) {
+  const allCameras = await readCameras();
+  await writeCameras(allCameras.concat(camera));
+
+}
+
 async function getCameraById(id) {
 
   const allCameras = await readCameras();
@@ -59,5 +65,6 @@ module.exports = {
   getCameraById,
   cameraExists,
   createCamera,
+  deleteCamera,
   getAllCameras: readCameras,
 };
