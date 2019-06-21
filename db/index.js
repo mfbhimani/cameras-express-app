@@ -33,7 +33,7 @@ async function createCamera(camera) {
 
 async function deleteCamera(camera) {
   const allCameras = await readCameras();
-  await writeCameras(allCameras.concat(camera));
+  await writeCameras(allCameras.filter(cameras => cameras.id !== camera.id));
 
 }
 
