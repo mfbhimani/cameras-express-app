@@ -131,8 +131,97 @@ router.post('/camera', async (req, res, next) => {
 
 // updating camera by ID
 
-router.put('/camera/:id', (req, res, next) => {
-  res.sendStatus(200);
+router.put('/camera/:id', async (req, res, next) => {
+
+  if (!Number.isInteger(parseInt(req.params.id))) {
+    res
+      .status(400)
+      .json({message:'ID needs to be an integer'})
+  } else {
+
+    const jsonReqErrors = {};
+
+    if (!req.body.brand) {
+      jsonReqErrors.brand = 'Error: json key/value pair of brand not defined or empty. Required';
+    }
+    if (!req.body.model) {
+      jsonReqErrors.model = 'Error: json key/value pair of model not defined or empty. Required';
+    }
+    if (!req.body.sensor) {
+      jsonReqErrors.sensor = 'Error: json key/value pair of sensor not defined or empty. Required';
+    }
+    if (!req.body.megapixels) {
+      jsonReqErrors.megapixels = 'Error: json key/value pair of megapixels not defined or empty. Required';
+    }
+    if (!req.body.viewfinder) {
+      jsonReqErrors.viewfinder = 'Error: json key/value pair of viewfinder not defined or empty. Required';
+    }
+    if (!req.body.price) {
+      jsonReqErrors.price = 'Error: json key/value pair of price not defined or empty. Required';
+    }
+
+    if (Object.keys(jsonReqErrors).length) {
+      res
+        .status(400)
+        .json(jsonReqErrors);
+      // return;
+    } else {
+
+      db.getCameraById(req.params.id)
+        .then((camera) => {
+          if (camera == null) {
+            res
+              .status(400)
+              .json({message:'no camera found by ID specified'})
+          } else {
+
+            // const allcameras = await db.getAllCameras();
+            db.getAllCameras()
+              .then ((allcameras) => {
+                const index = allcameras.findIndex(p => p.id == camera.id);
+                const id = { id: camera.id} ;
+                allcameras[index] = {...id, ...req.body} ;
+                db.writeCameras(allcameras)
+                  .then (() => {
+                    res.json({
+                      message: `Camera of id ${req.params.id} has been updated `,
+                      content: req.body
+                    })
+                  })
+                  .catch((err) => {
+                    if (err.status) {
+                      res
+                        .status(err.status)
+                        .json({message: err.message})
+                    }
+                    else {
+                      res
+                        .status(500)
+                        .json({message: err.message})
+                    }
+                  })
+
+              })
+
+          }
+
+
+        })
+        .catch((err) => {
+          if (err.status) {
+            res
+              .status(err.status)
+              .json({message: err.message})
+          }
+          else {
+            res
+              .status(500)
+              .json({message: err.message})
+          }
+        })
+
+    }
+  }
 });
 
 // deleting camera by ID

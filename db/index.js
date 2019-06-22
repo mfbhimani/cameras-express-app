@@ -66,5 +66,6 @@ module.exports = {
   cameraExists,
   createCamera,
   deleteCamera,
+  writeCameras,
   getAllCameras: readCameras,
 };

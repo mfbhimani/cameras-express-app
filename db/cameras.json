@@ -65,10 +65,19 @@
   {
     "id": 8,
     "brand": "Sony",
-    "model": "DSC-HX60",
+    "model": "DSC-HX30",
     "sensor": "CMOS",
-    "megapixels": 20.4,
+    "megapixels": 21.4,
     "viewfinder": "Electronic",
-    "price": 420
+    "price": 350
+  },
+  {
+    "id": 9,
+    "brand": "Sony",
+    "model": "DSC-HX70",
+    "sensor": "CMOS",
+    "megapixels": 23.4,
+    "viewfinder": "Electronic",
+    "price": 450
   }
 ]
