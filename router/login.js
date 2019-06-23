@@ -1,59 +1,60 @@
 'use strict';
 
 let argon = require('argon2');
-let db = require('../../db');
+let usersdb = require('../db/users');
 
 
 /**
- * Initial page rendering
- */
-function getLoginRoute(req, res) {
-  res.render('login', {
-    pageId: 'login',
-    title: 'Login',
-    username: req.session.username,
-    formError: null,
-    formValues: { username: null, password: null },
-  });
-}
-
-
-/**
- * Form submission
+ * used by POST /login route to verify user exists and match to login
  */
 function postLoginRoute(req, res, next) {
-  db.usernameExists(req.body.username)
+  usersdb.userExists(req.body.username)
     .then((usernameExists) => {
-      // Login is not valid if username does not exist
-      if (!usernameExists) {
-        return false;
-      // If the username exists verify the password is correct
+
+
+      console.log(req.body, usernameExists);
+      let formErrors = {
+        username: (usernameExists && req.body.username) ? null : 'Username not provided or not authorized for access',
+        password: (req.body.password) ? null : 'Password not provided',
+      };
+
+      // Login is not valid if username does not exist or password not provided
+
+      if (formErrors.username || formErrors.password) {
+        res
+          .status(400)
+          .json({
+            message: `User Access failed. Reason identified below `,
+            content: formErrors
+          })
+
+        // return false;
+      // Else if the form values are valid
       } else {
-        return db.getUserPasswordHash(req.body.username)
+
+        return usersdb.getUserPasswordHash(req.body.username)
           .then((dbHash) => {
             return argon.verify(dbHash, req.body.password);
           });
+
       }
+
     })
     .then((isValid) => {
       // If invalid respond with authentication failure
       if (!isValid) {
         res
           .status(401)
-          .render('login', {
-            pageId: 'login',
-            title: 'Login',
-            username: req.session.username,
-            formError: 'Authentication failed.',
-            formValues: {
-              username: req.body.username || null,
-              password: req.body.password || null,
-            },
-          });
-      // Else log the user in and redirect to home page
+          .json({
+            message: `Authentication Failure. Incorrect password provided `
+          })
+      // Else log user in
       } else {
-        req.session.username = req.body.username;
-        res.redirect('/');
+        // req.session.username = req.body.username;
+        res
+          .json({
+            message: `Login Successful `
+          })
       }
     })
     .catch(next);
@@ -61,6 +62,5 @@ function postLoginRoute(req, res, next) {
 
 
 module.exports = {
-  get: getLoginRoute,
   post: postLoginRoute,
 };

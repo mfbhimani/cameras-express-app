@@ -3,6 +3,7 @@
 const express = require('express');
 let db = require('../db');
 let registerRoute = require('./register');
+let loginRoute = require('./login');
 const router = express.Router();
 
 
@@ -20,18 +21,12 @@ router.get('/', async (req, res) => {
 
 // route to handle registration of inputs: username and password
 
-/* router.post('/register', (req, res, next) => {
-  res.sendStatus(200);
-}); */
-
 router.post('/register', registerRoute.post);
 
 
 // route to handle login with specific inputs provided: username and password
 
-router.post('/login', (req, res, next) => {
-  res.sendStatus(200);
-});
+router.post('/login', loginRoute.post);
 
 // get list of cameras
 

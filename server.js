@@ -1,5 +1,15 @@
 'use strict';
 
+/* require('dotenv').config(); // Run this first to ensure all environment variables are set
+let path = require('path');
+let express = require('express');
+let session = require('express-session');
+let router = require('./router');
+let defaultSessionValues = require('./middleware/default-session-values');
+let authentication = require('./middleware/authentication');
+let defaultErrorHandler = require('./middleware/default-error-handler');
+*/
+
 const express = require('express');
 const router = require('./router');
 const defaultErrorHandler = require('./middleware/default-error-handler');
