@@ -4,7 +4,6 @@ const express = require('express');
 const router = require('./router');
 const defaultErrorHandler = require('./middleware/default-error-handler');
 
-
 // Create an instance of an Express server app
 const app = express();
 
