@@ -4,11 +4,13 @@ const express = require('express');
 let db = require('../db');
 let registerRoute = require('./register');
 let loginRoute = require('./login');
+let authentication = require('../middleware/authentication');
+
 const router = express.Router();
 
 
 // Renders the home page
-router.get('/', async (req, res) => {
+router.get('/', authentication, async (req, res) => {
   // res.render('home');
   const cameras = await db.getAllCameras();
 
@@ -30,7 +32,7 @@ router.post('/login', loginRoute.post);
 
 // get list of cameras
 
-router.get('/camera', async (req, res, next) => {
+router.get('/camera', authentication, async (req, res, next) => {
 
   try {
     const allcameras = await db.getAllCameras();
@@ -50,7 +52,7 @@ router.get('/camera', async (req, res, next) => {
 
 // get camera by ID
 
-router.get('/camera/:id', async (req, res, next) => {
+router.get('/camera/:id', authentication, async (req, res, next) => {
   // check if id is an integer
   if (!Number.isInteger(parseInt(req.params.id))) {
     res
@@ -74,7 +76,7 @@ router.get('/camera/:id', async (req, res, next) => {
 
 // create camera
 
-router.post('/camera', async (req, res, next) => {
+router.post('/camera', authentication, async (req, res, next) => {
 
   const jsonReqErrors = {};
 
@@ -130,7 +132,7 @@ router.post('/camera', async (req, res, next) => {
 
 // updating camera by ID
 
-router.put('/camera/:id', async (req, res, next) => {
+router.put('/camera/:id', authentication, async (req, res, next) => {
 
   if (!Number.isInteger(parseInt(req.params.id))) {
     res
@@ -225,7 +227,7 @@ router.put('/camera/:id', async (req, res, next) => {
 
 // deleting camera by ID
 
-router.delete('/camera/:id', async (req, res, next) => {
+router.delete('/camera/:id', authentication, async (req, res, next) => {
 
   if (!Number.isInteger(parseInt(req.params.id))) {
     res

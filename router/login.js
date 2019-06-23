@@ -50,7 +50,7 @@ function postLoginRoute(req, res, next) {
           })
       // Else log user in
       } else {
-        // req.session.username = req.body.username;
+        req.session.username = req.body.username;
         res
           .json({
             message: `Login Successful `
