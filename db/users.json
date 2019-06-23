@@ -1,0 +1,10 @@
+[
+  {
+    "username": "testuser1",
+    "password": "testpassword1"
+  },
+  {
+    "username": "testuser2",
+    "password": "$argon2i$v=19$m=4096,t=3,p=1$UUAnr66hz5skVpCtCvOu/A$Kczx+8TG5zG0BLa8VX+6vxrGAdwJcPGLtXb3QtJp9fk"
+  }
+]
